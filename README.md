@@ -5,7 +5,7 @@ A Python script that uses the Stack Overflow for Teams API to create inactive us
 ## Table of Contents
 * [Requirements](https://github.com/jklick-so/so4t_inactive_users?tab=readme-ov-file#requirements)
 * [Setup](https://github.com/jklick-so/so4t_inactive_users?tab=readme-ov-file#setup)
-* [Usage](https://github.com/jklick-so/so4t_inactive_users?tab=readme-ov-file#basic-usage)
+* [Usage](https://github.com/jklick-so/so4t_inactive_users?tab=readme-ov-file#usage)
 * [Support, security, and legal](https://github.com/jklick-so/so4t_inactive_users?tab=readme-ov-file#support-security-and-legal)
 
 
