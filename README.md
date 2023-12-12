@@ -45,7 +45,7 @@ As the script runs, it will continue to update the terminal window with the task
 Three reports are generated:
 * `all_users_inactive_for_##_days.csv` - as the name implies, this is all users who have not logged in within the specified number of days
 * `contributing_users_inactive_for_##_days.csv` - this is a subset of the `all_users` report, and includes only users who have contributed content. The use case for this report is identifying a subset of inactive users who might be adversely impacted if their account was deleted (i.e. they'd lose their user profile, reputation gains, content attribution, etc.)
-* `noncontributing_users_inactive_for_##_days.csv` - this is a subset of the `all_users` report, including only users who have *not* contributed any content; in other words, the delta between the `all_users` and `contributing_users` reports. It's likely that these users can be safely deleted; and, if they're deleted prematurely (or in error), they can simply register for a new account and create a new user profile without experiencing any loss of reputation points, contribut attribution, etc.
+* `noncontributing_users_inactive_for_##_days.csv` - this is a subset of the `all_users` report, including only users who have *not* contributed any content; in other words, the delta between the `all_users` and `contributing_users` reports. It's likely that these users can be safely deleted; and, if they're deleted prematurely (or in error), they can simply register for a new account and create a new user profile without experiencing any loss of reputation points, content attribution, etc.
 
 
 ## Support, security, and legal
