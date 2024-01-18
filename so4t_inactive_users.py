@@ -69,19 +69,17 @@ def get_args():
     
     parser.add_argument('--url', 
                         type=str,
-                        help='Base URL for your Stack Overflow for Teams instance. '
-                        'Required if --no-api is not used')
+                        help='Base URL for your Stack Overflow for Teams instance. ')
     parser.add_argument('--token',
                         type=str,
-                        help='API token for your Stack Overflow for Teams instance. '
-                        'Required if --no-api is not used')
+                        help='API token for your Stack Overflow for Teams instance. ')
     parser.add_argument('--key',
                     type=str,
-                    help='API key value. Required if using Enterprise and --no-api is not used')
+                    help='API key value. Required if using Stack Overflow Enterprise')
     parser.add_argument('--days',
                         type=int,
-                        help='Only include metrics for content created within the past X days. '
-                        'Default is to include all history')
+                        help='Only report on users that have been inactive by at least this many '
+                        'days. Default is 180 days.')
 
     return parser.parse_args()
 
@@ -113,13 +111,14 @@ def get_user_data(client):
         user['comment_count'] = 0
 
     # Get additional user data from comments and articles
+    # Question count and answer count are already included in the user data
     articles = client.get_all_articles()
     comments = client.get_all_comments()
 
     for article in articles:
         try:
             article_owner_id = article['owner']['user_id']
-        except KeyError:
+        except KeyError: # Article was made by a deleted user
             continue
         for user in users:
             if user['user_id'] == article_owner_id:
@@ -128,7 +127,7 @@ def get_user_data(client):
     for comment in comments:
         try:
             comment_owner_id = comment['owner']['user_id']
-        except KeyError:
+        except KeyError: # Comment was made by a deleted user
             continue
         for user in users:
             if user['user_id'] == comment_owner_id:
@@ -142,6 +141,7 @@ def write_user_data(file_name, users):
     with open(file_name, 'w', newline='') as csv_file:
         field_names = [
             'user_id',
+            'account_id',
             'verified_email',
             'display_name',
             'inactive_days',
