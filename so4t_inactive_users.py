@@ -138,7 +138,7 @@ def get_user_data(client):
 
 def write_user_data(file_name, users):
 
-    with open(file_name, 'w', newline='') as csv_file:
+    with open(file_name, 'w', encoding='utf-8', newline='') as csv_file:
         field_names = [
             'user_id',
             'account_id',
